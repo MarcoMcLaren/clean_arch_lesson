@@ -14,10 +14,13 @@ namespace Application.Services;
 // Dependency Injection will supply the real repository at runtime.
 public class BicycleService : IBicycleService
 {
-    private readonly IBicycleRepository _repository;
+    
+    //BicycleService depends on the IBicycleRepository and IMapper(AutoMapper) to fulfill the IBicycleService contract
+    private readonly IBicycleRepository _repository; // this is a private variable we declare of type (not string, int, bool ) but of type IBicycleRepository we created
     private readonly IMapper _mapper;
 
-    // Constructor Injection — ASP.NET Core DI framework calls this automatically
+    // This is called a constructor, here we will assign values to the private variables we just declared
+    //BicycleService says in its constructor "I need an IBicycleRepository" and "I need a IMapper" to function, The DI container sees that, checks its registrations in Program.cs, and goes: "Someone is asking for IBicycleRepository — I know that one, give them a BicycleRepository."
     public BicycleService(IBicycleRepository repository, IMapper mapper)
     {
         _repository = repository;

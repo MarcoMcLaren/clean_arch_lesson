@@ -9,7 +9,10 @@ namespace Infrastructure.Repositories;
 // BicycleRepository implements the IBicycleRepository interface defined in Domain.
 // This is the only class in the solution that talks to EF Core for bicycles.
 // The Application layer and controllers never see AppDbContext directly.
-public class BicycleRepository : IBicycleRepository
+
+//BicycleRepository implements IBicycleRepository
+//"Implement" means: write the actual code that was promised.
+public class BicycleRepository : IBicycleRepository 
 {
     private readonly AppDbContext _context;
 
